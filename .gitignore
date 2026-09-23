@@ -1,0 +1,33 @@
+# Maven
+target/
+*.war
+*.class
+
+# Divers Java
+*.log
+hs_err_pid*
+
+# NetBeans
+nbproject/private/
+build/
+dist/
+nbactions.xml
+nb-configuration.xml
+*.lastModified
+
+# IDE divers
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+.metadata/
+
+# Systemes
+.DS_Store
+Thumbs.db
+
+# Base de donnees locale (XAMPP)
+*.sql.old
+*.sql.bak

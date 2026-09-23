@@ -1,0 +1,389 @@
+/* Styles generaux de RestoLiv */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #1a73e8;
+}
+
+/* Page de connexion */
+.page-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a73e8, #0b3d91);
+}
+
+.boite-login {
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    width: 360px;
+    text-align: center;
+}
+
+.boite-login h1 {
+    color: #0b3d91;
+    font-size: 32px;
+    margin-bottom: 4px;
+}
+
+.boite-login .sous-titre {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.boite-login form {
+    text-align: left;
+}
+
+.boite-login label {
+    display: block;
+    margin: 12px 0 5px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.boite-login input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.bouton {
+    width: 100%;
+    padding: 11px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background: #1a73e8;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.bouton:hover {
+    background: #0b5fd9;
+}
+
+.alerte {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.alerte-erreur {
+    background: #fdecea;
+    color: #c62828;
+    border: 1px solid #f5c6c2;
+}
+
+/* Entete et navigation */
+.entete {
+    background: #0b3d91;
+    color: #fff;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+}
+
+.entete .marque {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.navigation {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.navigation a,
+.navigation button {
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.navigation a:hover,
+.navigation button:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.conteneur {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 0 20px;
+}
+
+.titre-page {
+    font-size: 24px;
+    color: #0b3d91;
+    margin-bottom: 20px;
+}
+
+.carte {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e3e6ea;
+}
+
+th {
+    background: #f0f2f5;
+    color: #555;
+}
+
+.bouton-secondaire {
+    background: #6c757d;
+    color: #fff;
+    padding: 7px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.bouton-retrait {
+    background: #dc3545;
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-vert {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-gris {
+    background: #e2e3e5;
+    color: #383d41;
+}
+
+.sous-titre-page {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* Cartes de statistiques du dashboard */
+.statistiques {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.carte-stat {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    border-left: 5px solid #1a73e8;
+}
+
+.carte-stat .valeur {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0b3d91;
+}
+
+.carte-stat .libelle {
+    font-size: 13px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.carte-stat.ca {
+    border-left-color: #2e7d32;
+}
+
+.carte-stat.livreur-libre {
+    border-left-color: #2e7d32;
+}
+
+.carte-stat.en-cuisine {
+    border-left-color: #f57c00;
+}
+
+.carte-stat.en-livraison {
+    border-left-color: #8e24aa;
+}
+
+.carte-stat.retour {
+    border-left-color: #c62828;
+}
+
+.carte-stat.livree {
+    border-left-color: #00695c;
+}
+
+/* Formulaires */
+.groupe-formulaire {
+    margin-bottom: 15px;
+}
+
+.groupe-formulaire label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.groupe-formulaire input,
+.groupe-formulaire select,
+.groupe-formulaire textarea {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.groupe-formulaire textarea {
+    min-height: 80px;
+}
+
+.case-cocher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.case-cocher input {
+    width: auto;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.barre-outils {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.barre-outils form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.alerte-succes {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.surbrillance {
+    background: #fff8e1;
+}
+
+.texte-secondaire {
+    color: #888;
+    font-size: 13px;
+}
+
+/* Facture */
+.zone-facture {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.entete-facture {
+    text-align: center;
+    border-bottom: 2px solid #0b3d91;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+}
+
+.entete-facture h1 {
+    color: #0b3d91;
+    font-size: 28px;
+}
+
+.bloc-infos {
+    margin-bottom: 15px;
+}
+
+.bloc-infos th {
+    width: 200px;
+    background: #f0f2f5;
+}
+
+.zone-impression {
+    display: flex;
+    gap: 10px;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+@media print {
+    .entete,
+    .zone-impression,
+    .navigation {
+        display: none !important;
+    }
+
+    body {
+        background: #fff;
+    }
+
+    .conteneur {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .carte {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
