@@ -1,7 +1,9 @@
 package com.restoliv.model;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 // Represente le paiement Mobile Money d'une commande.
 public class Paiement {
@@ -55,6 +57,14 @@ public class Paiement {
 
     public void setMontant(BigDecimal montant) {
         this.montant = montant;
+    }
+
+    public String getMontantTexte() {
+        if (montant == null) {
+            return "";
+        }
+        return NumberFormat.getNumberInstance(Locale.FRENCH).format(montant)
+                .replace('\u202F', ' ').replace('\u00A0', ' ') + " Ar";
     }
 
     public LocalDateTime getDatePaiement() {

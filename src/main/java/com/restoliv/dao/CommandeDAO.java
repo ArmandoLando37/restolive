@@ -112,9 +112,24 @@ public class CommandeDAO {
         return compter(sql, null);
     }
 
+    // Compte les commandes d'hier
+    public int compterCommandesHier() {
+        String sql = "SELECT COUNT(*) AS total FROM commande WHERE DATE(date_commande) = CURDATE() - INTERVAL 1 DAY";
+        return compter(sql, null);
+    }
+
     // Somme des totaux des commandes du jour (chiffre d'affaires)
     public BigDecimal sommeTotalAujourdhui() {
-        String sql = "SELECT COALESCE(SUM(total), 0) AS total FROM commande WHERE DATE(date_commande) = CURDATE()";
+        return sommeTotalJour("CURDATE()");
+    }
+
+    // Somme des totaux des commandes d'hier (chiffre d'affaires)
+    public BigDecimal sommeTotalHier() {
+        return sommeTotalJour("CURDATE() - INTERVAL 1 DAY");
+    }
+
+    private BigDecimal sommeTotalJour(String jourSql) {
+        String sql = "SELECT COALESCE(SUM(total), 0) AS total FROM commande WHERE DATE(date_commande) = " + jourSql;
         try (Connection connexion = AccesBdd.obtenirConnexion();
              PreparedStatement statement = connexion.prepareStatement(sql);
              ResultSet resultat = statement.executeQuery()) {

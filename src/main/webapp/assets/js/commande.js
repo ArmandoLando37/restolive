@@ -14,7 +14,7 @@
                 total += prix * quantite;
             }
         });
-        document.getElementById('montantTotal').textContent = total.toFixed(2) + ' Ar';
+        document.getElementById('montantTotal').textContent = total.toLocaleString('fr-FR', { maximumFractionDigits: 2 }) + ' Ar';
     }
 
     document.querySelectorAll('.case-plat, .quantite-plat').forEach(function (element) {

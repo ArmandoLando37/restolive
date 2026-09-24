@@ -1,8 +1,10 @@
 package com.restoliv.model;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 // Represente une commande recue par telephone ou WhatsApp.
 public class Commande {
@@ -92,6 +94,14 @@ public class Commande {
 
     public void setTotal(BigDecimal total) {
         this.total = total;
+    }
+
+    public String getTotalTexte() {
+        if (total == null) {
+            return "";
+        }
+        return NumberFormat.getNumberInstance(Locale.FRENCH).format(total)
+                .replace('\u202F', ' ').replace('\u00A0', ' ') + " Ar";
     }
 
     public LocalDateTime getDateCommande() {

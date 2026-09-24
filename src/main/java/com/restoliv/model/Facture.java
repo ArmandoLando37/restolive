@@ -1,8 +1,10 @@
 package com.restoliv.model;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 // Represente la facture d'une commande.
 public class Facture {
@@ -53,6 +55,14 @@ public class Facture {
             return "";
         }
         return dateFacture.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+    }
+
+    public String getMontantTotalTexte() {
+        if (montantTotal == null) {
+            return "";
+        }
+        return NumberFormat.getNumberInstance(Locale.FRENCH).format(montantTotal)
+                .replace('\u202F', ' ').replace('\u00A0', ' ') + " Ar";
     }
 
     public BigDecimal getMontantTotal() {

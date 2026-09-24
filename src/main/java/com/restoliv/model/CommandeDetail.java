@@ -1,6 +1,8 @@
 package com.restoliv.model;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 // Represente une ligne de commande (un plat avec sa quantite).
 public class CommandeDetail {
@@ -62,6 +64,22 @@ public class CommandeDetail {
 
     public void setSousTotal(BigDecimal sousTotal) {
         this.sousTotal = sousTotal;
+    }
+
+    public String getPrixUnitaireTexte() {
+        if (prixUnitaire == null) {
+            return "";
+        }
+        return NumberFormat.getNumberInstance(Locale.FRENCH).format(prixUnitaire)
+                .replace('\u202F', ' ').replace('\u00A0', ' ') + " Ar";
+    }
+
+    public String getSousTotalTexte() {
+        if (sousTotal == null) {
+            return "";
+        }
+        return NumberFormat.getNumberInstance(Locale.FRENCH).format(sousTotal)
+                .replace('\u202F', ' ').replace('\u00A0', ' ') + " Ar";
     }
 
     public String getNomPlat() {

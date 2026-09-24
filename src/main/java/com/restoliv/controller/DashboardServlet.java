@@ -3,6 +3,9 @@ package com.restoliv.controller;
 import com.restoliv.service.CommandeService;
 import com.restoliv.service.LivreurService;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,17 +24,32 @@ public class DashboardServlet extends HttpServlet {
             throws ServletException, IOException {
         // Commandes
         requete.setAttribute("commandesAujourdhui", commandeService.compterCommandesAujourdhui());
+        requete.setAttribute("commandesHier", commandeService.compterCommandesHier());
         requete.setAttribute("statutRecue", commandeService.compterParStatut("RECUE"));
         requete.setAttribute("statutEnCuisine", commandeService.compterParStatut("EN_CUISINE"));
         requete.setAttribute("statutEnLivraison", commandeService.compterParStatut("EN_LIVRAISON"));
         requete.setAttribute("statutLivree", commandeService.compterParStatut("LIVREE"));
         requete.setAttribute("statutRetour", commandeService.compterParStatut("RETOUR"));
-        requete.setAttribute("chiffreAffaires", commandeService.chiffreAffairesJour());
+        BigDecimal chiffreAffaires = commandeService.chiffreAffairesJour();
+        requete.setAttribute("chiffreAffaires", chiffreAffaires);
+        requete.setAttribute("chiffreAffairesTexte", formatMontant(chiffreAffaires));
+        requete.setAttribute("chiffreAffairesHier", commandeService.chiffreAffairesHier());
 
         // Livreurs
         requete.setAttribute("livreursLibre", livreurService.compterLivreursParStatut("LIBRE"));
         requete.setAttribute("livreursEnLivraison", livreurService.compterLivreursParStatut("EN_LIVRAISON"));
 
         requete.getRequestDispatcher("/WEB-INF/views/dashboard/dashboard.jsp").forward(requete, reponse);
+    }
+
+    // Formate une somme avec espaces normales
+    private String formatMontant(BigDecimal montant) {
+        if (montant == null) {
+            return "0";
+        }
+        NumberFormat format = NumberFormat.getNumberInstance(Locale.FRENCH);
+        format.setMinimumFractionDigits(0);
+        format.setMaximumFractionDigits(2);
+        return format.format(montant).replace('\u202F', ' ').replace('\u00A0', ' ');
     }
 }

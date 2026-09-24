@@ -225,8 +225,16 @@ public class CommandeService {
         return commandeDAO.compterCommandesAujourdhui();
     }
 
+    public int compterCommandesHier() {
+        return commandeDAO.compterCommandesHier();
+    }
+
     public BigDecimal chiffreAffairesJour() {
         return commandeDAO.sommeTotalAujourdhui();
+    }
+
+    public BigDecimal chiffreAffairesHier() {
+        return commandeDAO.sommeTotalHier();
     }
 
     // Reference unique de commande

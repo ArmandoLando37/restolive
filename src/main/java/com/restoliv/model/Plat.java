@@ -1,7 +1,9 @@
 package com.restoliv.model;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 // Represente un plat du menu.
 public class Plat {
@@ -53,6 +55,14 @@ public class Plat {
 
     public void setPrix(BigDecimal prix) {
         this.prix = prix;
+    }
+
+    public String getPrixTexte() {
+        if (prix == null) {
+            return "";
+        }
+        return NumberFormat.getNumberInstance(Locale.FRENCH).format(prix)
+                .replace('\u202F', ' ').replace('\u00A0', ' ') + " Ar";
     }
 
     public boolean isDisponible() {

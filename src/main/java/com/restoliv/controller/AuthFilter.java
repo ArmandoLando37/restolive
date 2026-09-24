@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 // Protege les pages necessitant une connexion.
 @WebFilter(urlPatterns = {"/dashboard", "/menu", "/menu/*", "/livreurs", "/livreurs/*",
-        "/commandes", "/commandes/*", "/paiements", "/factures"})
+        "/commandes", "/commandes/*", "/paiements", "/factures", "/factures/*"})
 public class AuthFilter implements Filter {
 
     @Override
